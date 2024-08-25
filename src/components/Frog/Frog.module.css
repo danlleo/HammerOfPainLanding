@@ -1,0 +1,29 @@
+.frog {
+  position: fixed;
+  bottom: -120px;
+  right: 0;
+  z-index: 999;
+  width: 300px;
+  height: 300px;
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+
+.frog img {
+  width: 100%;
+  height: 100%;
+  transition: 0.3s ease-in-out;
+}
+
+.frog img:hover {
+  transform: translateY(-20px);
+}
+
+.fadeout {
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+
+.hidden {
+  opacity: 0;
+}
