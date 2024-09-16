@@ -5,10 +5,12 @@ import sleepingFrogLogo from '../../public/images/sleepingfrog_logo_text.png'
 import bakedGamesLogo from '../../public/images/LOGO_BLACK_BACKGROUND_BakedGames.png'
 import fmodLogo from '../../public/images/156-1566681_fmod-1-fmod.webp'
 import playwayLogo from '../../public/images/playway.svg'
+import clickHold from '../../public/images/click_hold.jpg'
+import graphic from '../../public/images/graphic.jpg'
+import puzzles from '../../public/images/puzzles.jpg'
+import quests from '../../public/images/quests.jpg'
 import headerStyles from '../components/Header.module.css'
 import contentStyles from '../components/Content.module.css'
-import ScrollArrow from '../components/ArrowScroll/ArrowScroll'
-import ScrollHandler from '@/components/ScrollHandler/ScrollHandler'
 import { Fade } from 'react-awesome-reveal'
 import Frog from '@/components/Frog/Frog'
 
@@ -124,8 +126,8 @@ export default function Home() {
         </Fade>
         <div className={contentStyles.promotionContainer}>
           <div className={contentStyles.promotionSmallItem}>
+            <Image src={clickHold} alt='' />
             <Fade direction='left' triggerOnce>
-              <img src='https://sleepingfrog.org/images/click_hold.jpg' />
               <div className={contentStyles.promotionSmallItemInfo}>
                 <h2>Combat system "Click-and-Hold"</h2>
                 <p>
@@ -144,8 +146,8 @@ export default function Home() {
           <div
             className={`${contentStyles.promotionSmallItem} ${contentStyles.reverse}`}
           >
+            <Image src={quests} alt='' />
             <Fade direction='right' triggerOnce>
-              <img src='https://sleepingfrog.org/images/quests.jpg' />
               <div className={contentStyles.promotionSmallItemInfo}>
                 <h2>More than 129+ different quests</h2>
                 <p>
@@ -161,8 +163,8 @@ export default function Home() {
             </Fade>
           </div>
           <div className={contentStyles.promotionSmallItem}>
+            <Image src={puzzles} alt='' />
             <Fade direction='left' triggerOnce>
-              <img src='https://sleepingfrog.org/images/puzzles.jpg' />
               <div className={contentStyles.promotionSmallItemInfo}>
                 <h2>4 different locations with their own puzzles</h2>
                 <p>
@@ -182,8 +184,8 @@ export default function Home() {
           <div
             className={`${contentStyles.promotionSmallItem} ${contentStyles.reverse}`}
           >
+            <Image src={graphic} alt='' />
             <Fade direction='right' triggerOnce>
-              <img src='https://sleepingfrog.org/images/graphic.jpg' />
               <div className={contentStyles.promotionSmallItemInfo}>
                 <h2>Stylish, hand-drawn pixel art</h2>
                 <p>
@@ -206,19 +208,16 @@ export default function Home() {
         <Fade direction='down' triggerOnce>
           <h1 className={contentStyles.contentTitle}>Discover</h1>
         </Fade>
-        <Fade triggerOnce duration={3000}>
-          <div className='responsive-video'>
+          <div className={contentStyles.responsiveVideo}>
             <iframe
               src='https://www.youtube.com/embed/S3Hmt1vHW40?si=ILITdGBmIiET-reA'
               title='YouTube video player'
-              frameBorder='0'
               allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
               referrerPolicy='strict-origin-when-cross-origin'
               allowFullScreen
               className={contentStyles.frame}
             />
           </div>
-        </Fade>
       </article>
 
       <article id='content' className={contentStyles.article}>
