@@ -6,6 +6,9 @@ function Frog() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [wasTouched, setWasTouched] = useState(false)
   const [position, setPosition] = useState({ bottom: -120, right: 0 })
+  const [rotation, setRotation] = useState(0)
+
+  const frogOffset = 100;
 
   const playCroakSound = () => {
     const audio = new Audio('/audios/Croak.mp3')
@@ -35,29 +38,35 @@ function Frog() {
     const edge = Math.floor(Math.random() * 4)
     let randomBottom = 0
     let randomRight = 0
+    let newRotation = 0
 
     switch (edge) {
       case 0:
         randomBottom = -120
-        randomRight = Math.random() * (window.innerWidth - 300)
+        randomRight = Math.random() * (window.innerWidth - frogOffset)
+        newRotation = 0
         break
       case 1:
-        randomBottom = window.innerHeight - 300
-        randomRight = Math.random() * (window.innerWidth - 300)
+        randomBottom = window.innerHeight - 200
+        randomRight = Math.random() * (window.innerWidth - frogOffset)
+        newRotation = 180
         break
       case 2:
-        randomBottom = Math.random() * (window.innerHeight - 300)
+        randomBottom = Math.random() * (window.innerHeight - frogOffset)
         randomRight = 0
+        newRotation = -90
         break
       case 3:
-        randomBottom = Math.random() * (window.innerHeight - 300)
-        randomRight = window.innerWidth - 300
+        randomBottom = Math.random() * (window.innerHeight - frogOffset)
+        randomRight = window.innerWidth - 200
+        newRotation = 90
         break
       default:
         break
     }
 
     setPosition({ bottom: randomBottom, right: randomRight })
+    setRotation(newRotation)
   }
 
   return (
@@ -68,6 +77,7 @@ function Frog() {
       <Fade>
         <img
           src='/images/sleeping-frog.png'
+          style={{ transform: `rotate(${rotation}deg)` }}
           onClick={() => {
             playCroakSound()
             fadeOut()
