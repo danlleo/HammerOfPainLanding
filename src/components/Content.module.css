@@ -192,7 +192,7 @@
 
 .stayTuned input {
   border: none;
-  border-radius: 5px 0px 0px 5px;
+  border-radius: 5px;
   padding: 1rem 1rem;
   background: #191919;
   font-size: 1.2rem;
@@ -200,12 +200,27 @@
   font-weight: lighter;
   outline: none;
   width: 100%;
-  max-width: 600px;
   box-sizing: border-box;
+}
+
+.stayTuned textarea {
+  padding: 1rem;
+  font-size: 1.2rem;
+  background: #191919;
+  color: #e2dace;
+  margin: 1rem 0;
+  font-weight: lighter;
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+  width: 100%;
+  resize: none;
+  outline: none;
 }
 
 .formContent {
   display: flex;
+  flex-direction: column;
 }
 
 .stayTuned button {
@@ -216,10 +231,12 @@
   padding: 1rem;
   text-transform: uppercase;
   cursor: pointer;
-  border-radius: 0px 5px 5px 0px;
+  border-radius: 5px;
   letter-spacing: 1px;
   font-weight: bold;
   font-size: 1.15rem;
+  width: 30%;
+  align-self: flex-end;
 }
 
 .footer {

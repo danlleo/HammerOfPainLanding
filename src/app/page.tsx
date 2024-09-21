@@ -13,8 +13,34 @@ import headerStyles from '../components/Header.module.css'
 import contentStyles from '../components/Content.module.css'
 import { Fade } from 'react-awesome-reveal'
 import Frog from '@/components/Frog/Frog'
+import { useState } from 'react'
 
 export default function Home() {
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+  const [status, setStatus] = useState('')
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        message,
+      }),
+    })
+
+    if (res.ok) {
+      setStatus('Message sent successfully!')
+    } else {
+      setStatus('Failed to send message. Please try again.')
+    }
+  }
+
   return (
     <div className={headerStyles.container}>
       <header className={headerStyles.header}>
@@ -208,43 +234,62 @@ export default function Home() {
         <Fade direction='down' triggerOnce>
           <h1 className={contentStyles.contentTitle}>Discover</h1>
         </Fade>
-          <div className={contentStyles.responsiveVideo}>
-            <iframe
-              src='https://www.youtube.com/embed/S3Hmt1vHW40?si=ILITdGBmIiET-reA'
-              title='YouTube video player'
-              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-              referrerPolicy='strict-origin-when-cross-origin'
-              allowFullScreen
-              className={contentStyles.frame}
-            />
-          </div>
+        <div className={contentStyles.responsiveVideo}>
+          <iframe
+            src='https://www.youtube.com/embed/S3Hmt1vHW40?si=ILITdGBmIiET-reA'
+            title='YouTube video player'
+            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+            referrerPolicy='strict-origin-when-cross-origin'
+            allowFullScreen
+            className={contentStyles.frame}
+          />
+        </div>
       </article>
 
       <article id='content' className={contentStyles.article}>
-        <form
-          className={contentStyles.stayTuned}
-          action='mailto:your.email@example.com'
-          method='post'
-          encType='text/plain'
-        >
-          <Fade direction='down' triggerOnce>
-            <h1>
-              Got Any Questions<span> ?</span>
-            </h1>
-          </Fade>
-          <Fade direction='up' triggerOnce>
-            <div className={contentStyles.formContent}>
-              <input
-                type='email'
-                id='email'
-                name='email'
-                placeholder='your@emailadress.com'
-                required
-              />
-              <button type='submit'>Submit</button>
-            </div>
-          </Fade>
-        </form>
+        <Fade triggerOnce>
+          <form
+            className={contentStyles.stayTuned}
+            action='mailto:your.email@example.com'
+            method='post'
+            encType='text/plain'
+            onSubmit={handleSubmit}
+          >
+            <Fade direction='down' triggerOnce>
+              <h1>
+                Got Any Questions<span> ?</span>
+              </h1>
+            </Fade>
+            <Fade direction='up' triggerOnce>
+              <div className={contentStyles.formContent}>
+                <input
+                  type='email'
+                  id='email'
+                  name='email'
+                  placeholder='your@emailadress.com'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+                <textarea
+                  id='question'
+                  name='question'
+                  placeholder='Your Question'
+                  rows={15}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  required
+                />
+                <button type='submit'>Ask</button>
+              </div>
+            </Fade>
+            {status && (
+              <p className={contentStyles.status} style={{ marginTop: '1rem' }}>
+                {status}
+              </p>
+            )}
+          </form>
+        </Fade>
         <div className={contentStyles.footer}>
           <Fade triggerOnce duration={3000} style={{ width: '100%' }}>
             <Image
