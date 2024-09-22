@@ -5,6 +5,8 @@
   height: 300px;
   opacity: 1;
   transition: opacity 0.5s ease-out, bottom 0s, right 0s;
+  margin: 0;
+  padding: 0;
 }
 
 .frog img {

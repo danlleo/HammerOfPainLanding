@@ -237,6 +237,11 @@
   font-size: 1.15rem;
   width: 30%;
   align-self: flex-end;
+  transition: 250ms ease-in-out;
+}
+
+.stayTuned button:hover {
+  background-color: #f94d4d;
 }
 
 .footer {
@@ -358,7 +363,7 @@
 
 @media (max-width: 1199px) and (min-width: 768px) {
   .promotionItem {
-    justify-content: center;  
+    justify-content: center;
   }
 
   .promotionSmallItem {

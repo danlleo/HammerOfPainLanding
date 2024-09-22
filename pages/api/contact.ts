@@ -19,7 +19,7 @@ export default async function handler(
     try {
       await transporter.sendMail({
         from: email,
-        to: 'daniel.korienko@gmail.com',
+        to: 'sleepingfroghelp@gmail.com',
         subject: `New Question from ${email}`,
         text: `Email: ${email}\n\nQuestion: ${message}`,
       })

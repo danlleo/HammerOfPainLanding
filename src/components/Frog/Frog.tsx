@@ -8,7 +8,9 @@ function Frog() {
   const [position, setPosition] = useState({ bottom: -120, right: 0 })
   const [rotation, setRotation] = useState(0)
 
-  const frogOffset = 100;
+  const frogWidth = 300
+  const frogHeight = 300
+  const frogOffset = -100
 
   const playCroakSound = () => {
     const audio = new Audio('/audios/Croak.mp3')
@@ -31,7 +33,7 @@ function Frog() {
     setTimeout(() => {
       moveFrog()
       setWasTouched(false)
-    }, 10000)
+    }, 1000)
   }
 
   const moveFrog = () => {
@@ -40,25 +42,28 @@ function Frog() {
     let randomRight = 0
     let newRotation = 0
 
+    const maxRight = window.innerWidth - frogWidth - frogOffset
+    const maxBottom = window.innerHeight - frogHeight - frogOffset
+
     switch (edge) {
       case 0:
-        randomBottom = -120
-        randomRight = Math.random() * (window.innerWidth - frogOffset)
+        randomBottom = frogOffset
+        randomRight = Math.random() * (maxRight - frogOffset) + frogOffset
         newRotation = 0
         break
       case 1:
-        randomBottom = window.innerHeight - 200
-        randomRight = Math.random() * (window.innerWidth - frogOffset)
+        randomBottom = maxBottom
+        randomRight = Math.random() * (maxRight - frogOffset) + frogOffset
         newRotation = 180
         break
       case 2:
-        randomBottom = Math.random() * (window.innerHeight - frogOffset)
-        randomRight = 0
+        randomBottom = Math.random() * (maxBottom - frogOffset) + frogOffset
+        randomRight = frogOffset
         newRotation = -90
         break
       case 3:
-        randomBottom = Math.random() * (window.innerHeight - frogOffset)
-        randomRight = window.innerWidth - 200
+        randomBottom = Math.random() * (maxBottom - frogOffset) + frogOffset
+        randomRight = maxRight
         newRotation = 90
         break
       default:

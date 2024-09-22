@@ -257,7 +257,7 @@ export default function Home() {
           >
             <Fade direction='down' triggerOnce>
               <h1>
-                Got Any Questions<span> ?</span>
+                Got Any Questions<span>?</span>
               </h1>
             </Fade>
             <Fade direction='up' triggerOnce>
